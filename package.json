@@ -1,0 +1,45 @@
+{
+  "name": "postcss-sass-each",
+  "version": "0.1.0",
+  "description": "PostCSS plugin to iterate through values",
+  "main": "index.es5.js",
+  "keywords": [
+    "postcss",
+    "css",
+    "sass",
+    "postcss-plugin",
+    "each",
+    "iterator"
+  ],
+  "author": "Andrey Zhupik <madzhup@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:madzhup/postcss-sass-each.git"
+  },
+  "dependencies": {
+    "postcss": "^5.6.2",
+    "postcss-simple-vars": "^3.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.20.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-latest": "^6.16.0",
+    "eslint": "^3.11.1",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.8.0",
+    "mocha": "^3.2.0"
+  },
+  "scripts": {
+    "start": "babel index.js --source-maps --watch --out-file index.es5.js",
+    "lint": "eslint index.js",
+    "pretest": "eslint index.js test",
+    "test": "mocha --compilers js:babel-core/register",
+    "transpile": "babel index.js > index.es5.js",
+    "prepublish": "npm run transpile",
+    "postpublish": "rm *.es5.js && git push --follow-tags"
+  }
+}
