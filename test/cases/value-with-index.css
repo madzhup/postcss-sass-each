@@ -1,5 +1,5 @@
-@each $val, $i in foo, bar {
-    .icon-$(val) {
-        background: url("$(val)_$(i).png");
+@each val in foo, bar {
+    .icon-#(val) {
+        background: url("#(val)_#(index).png");
     }
 }

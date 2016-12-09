@@ -1,7 +1,7 @@
-@each $icon in foo, bar {
-    .icon-$(icon) {
-        @each $thing in $(icon)-abc, xyz {
-            border: $(thing);
+@each icon in foo, bar {
+    .icon-#(icon) {
+        @each thing in #(icon)-abc, xyz {
+            border: #(thing);
         }
     }
 }

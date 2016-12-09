@@ -58,7 +58,6 @@ function processRules(rule, params) {
     rule.nodes.forEach((node) => {
       const clone = node.clone();
       clone.selector = replaceEscaped(clone.selector);
-      clone.selector = replaceEscaped(clone.selector);
       clone.walk((n) => {
         const childNode = n;
         childNode.prop = replaceEscaped(childNode.prop);
