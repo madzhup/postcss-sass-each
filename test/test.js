@@ -2,7 +2,7 @@ import postcss from 'postcss';
 import assert from 'assert';
 import fs from 'fs';
 import path from 'path';
-import plugin from '../';
+import plugin from '..';
 
 const casesPath = path.join(__dirname, '/cases');
 
@@ -16,7 +16,7 @@ const cases = {
   'with-in-substring': 'respects properties with `in` substring',
   'multiline-expressions': 'respects multiline expressions',
   'multiple-properties': 'respects multiple properties',
-  'other-variables': 'doesn\'t replace other variables',
+  'other-variables': "doesn't replace other variables",
   // 'nested-iteration': 'performs nested iteration',
   // 'nested-iteration-parent-vars': 'performs nested iteration with parent\'s variables',
 };

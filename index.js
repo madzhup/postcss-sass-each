@@ -6,7 +6,7 @@ const SEPARATOR = /\s+in\s+/;
 function checkParams(params) {
   if (!SEPARATOR.test(params)) return 'Missed "in" keyword in @each';
 
-  const [name, values] = params.split(SEPARATOR).map(str => str.trim());
+  const [name, values] = params.split(SEPARATOR).map((str) => str.trim());
 
   if (!name.match(/[_a-zA-Z]?\w+/)) return 'Missed variable name in @each';
   if (!values.match(/(\w+,?\s?)+/)) return 'Missed values list in @each';
@@ -24,12 +24,14 @@ function tokenize(str) {
 function paramsList(params) {
   const [vars, list] = params.split(SEPARATOR).map(tokenize);
 
-  const values = list.filter(item => !!item).map((item) => {
-    const match = item.match(/^\((.*)\)$/);
-    return postcss.list
-      .comma(match ? match[1] : item)
-      .map(val => val.split(/:/));
-  });
+  const values = list
+    .filter((item) => !!item)
+    .map((item) => {
+      const match = item.match(/^\((.*)\)$/);
+      return postcss.list
+        .comma(match ? match[1] : item)
+        .map((val) => val.split(/:/));
+    });
 
   return {
     names: vars,
@@ -74,7 +76,9 @@ function processRules(rule, params) {
 
 function rulesExists(css) {
   let rulesLength = 0;
-  css.walkAtRules('each', () => (rulesLength += 1));
+  css.walkAtRules('each', () => {
+    rulesLength += 1;
+  });
   return rulesLength;
 }
 
@@ -107,6 +111,6 @@ function processLoop(css, opts) {
   if (rulesExists(cssTree)) processLoop(cssTree, opts);
 }
 
-export default postcss.plugin('postcss-sass-each', (opts = {}) => (
-  css => processLoop(css, opts)
-));
+export default postcss.plugin('postcss-sass-each', (opts = {}) => (css) =>
+  processLoop(css, opts),
+);
